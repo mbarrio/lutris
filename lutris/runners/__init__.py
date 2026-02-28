@@ -26,6 +26,7 @@ __all__ = [
     "rpcs3",
     "ryujinx",
     "scummvm",
+    "shadps4",
     "snes9x",
     "steam",
     "vice",
@@ -33,6 +34,7 @@ __all__ = [
     "web",
     "wine",
     "xemu",
+    "xenia",
     "yuzu",
     "zdoom",
 ]

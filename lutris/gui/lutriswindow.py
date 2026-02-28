@@ -7,7 +7,7 @@ from collections import namedtuple
 from datetime import datetime
 from gettext import gettext as _
 from gettext import ngettext
-from typing import Dict, Iterable, List, Set, cast
+from typing import Callable, Dict, Iterable, List, Set, cast
 from urllib.parse import unquote, urlparse
 
 from gi.repository import Gdk, Gio, GLib, Gtk
@@ -52,7 +52,7 @@ from lutris.gui.views.store import GameStore
 from lutris.gui.widgets.game_bar import GameBar
 from lutris.gui.widgets.gi_composites import GtkTemplate
 from lutris.gui.widgets.sidebar import LutrisSidebar, SidebarRow
-from lutris.gui.widgets.utils import has_stock_icon, load_icon_theme, open_uri
+from lutris.gui.widgets.utils import load_icon_theme, open_uri, pick_stock_icon
 from lutris.runtime import ComponentUpdater, RuntimeUpdater
 from lutris.search import GameSearch
 from lutris.search_predicate import NotPredicate
@@ -130,7 +130,7 @@ class LutrisWindow(Gtk.ApplicationWindow, DialogLaunchUIDelegate, DialogInstallU
         self.current_view = Gtk.Box()
         self.views = {}
 
-        self.dynamic_categories_game_factories = {
+        self.dynamic_categories_game_factories: Dict[str, Callable[[], list]] = {
             "recent": self.get_recent_games,
             "missing": self.get_missing_games,
             "running": self.get_running_games,
@@ -138,7 +138,9 @@ class LutrisWindow(Gtk.ApplicationWindow, DialogLaunchUIDelegate, DialogInstallU
 
         for smart_category in categories._SMART_CATEGORIES:
             if smart_category.get_name() not in self.dynamic_categories_game_factories:
-                self.dynamic_categories_game_factories[smart_category.get_name()] = smart_category.get_games
+                self.dynamic_categories_game_factories[smart_category.get_name()] = (
+                    lambda c=smart_category: self.filter_games(c.get_games())  # type: ignore
+                )
 
         self.accelerators = Gtk.AccelGroup()
         self.add_accel_group(self.accelerators)
@@ -155,12 +157,10 @@ class LutrisWindow(Gtk.ApplicationWindow, DialogLaunchUIDelegate, DialogInstallU
 
         # Since system-search-symbolic is already *right there* we'll try to pick some
         # other icon for the button that shows the search popover.
-        fallback_filter_icons_names = ["filter-symbolic", "edit-find-replace-symbolic", "system-search-symbolic"]
+        fallback_filter_icons_names = ["filter-symbolic", "edit-find-replace-symbolic"]
+        icon_name = pick_stock_icon(fallback_filter_icons_names, fallback_name="system-search-symbolic")
         filter_button_image: Gtk.Image = self.search_filters_button.get_child()
-        for n in fallback_filter_icons_names:
-            if has_stock_icon(n):
-                filter_button_image.set_from_icon_name(n, Gtk.IconSize.BUTTON)
-                break
+        filter_button_image.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
         self.filter_box_search_name = ""
 
         # Setup Drag and drop

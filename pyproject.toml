@@ -37,12 +37,20 @@ ignore = []
 
 [[tool.mypy.overrides]]
 module = [
+    "lutris.cache",
     "lutris.exception_backstops",
     "lutris.exceptions",
     "lutris.scanners.default_installers",
     "lutris.services.mame",
+    "lutris.settings",
+    "lutris.util",
     "lutris.util.discord.base",
+    "lutris.util.http",
+    "lutris.util.log",
+    "lutris.util.flatpak",
     "lutris.util.retroarch.core_config",
+    "lutris.util.settings",
+    "lutris.util.system",
     "lutris.util.ubisoft.consts",
     "lutris.util.wine.d3d_extras",
     "lutris.util.wine.dgvoodoo2",
