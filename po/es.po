@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lutris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-18 02:02+0100\n"
-"PO-Revision-Date: 2026-11-18 18:00+0100\n"
+"PO-Revision-Date: 2026-11-19 10:24+0100\n"
 "Last-Translator: Miguel Barrio Orsikowsky <megamik79@protonmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -52,7 +52,7 @@ msgid ""
 "implementations and compatibility layers, it gives you a central interface "
 "to launch all your games."
 msgstr ""
-"Lutris facilita instalar y jugar a videojuegos de todas las épocas y casi "
+"Lutris facilita instalar y jugar videojuegos de todas las épocas y casi "
 "cualquier sistema. Proporciona una interfaz centralizada para lanzar todos "
 "tus juegos aprovechando y combinando emuladores existentes, "
 "reimplementaciones de motores y capas de compatibilidad."
@@ -889,7 +889,7 @@ msgstr "Agrupada la descarga de GOG y de Amazon en una única barra de progreso"
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:232
 msgid "Fix blank login window on online services such as GOG or EGS"
 msgstr ""
-"Corrgida la ventana de login en blanco en servicios en línea como GOG o EGS"
+"Corregida la ventana de login en blanco en servicios en línea como GOG o EGS"
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:233
 msgid "Add a sort name field"
@@ -6194,7 +6194,7 @@ msgstr "Predeterminado de Mednafen"
 
 #: lutris/runners/mednafen.py:101
 msgid "ALSA default"
-msgstr "predeterminado de ALSA"
+msgstr "Predeterminado de ALSA"
 
 #: lutris/runners/mednafen.py:111
 msgid "Use default Mednafen controller configuration"
@@ -6612,7 +6612,7 @@ msgstr "Archivo NSP"
 
 #: lutris/runners/ryujinx.py:32
 msgid "Select which app to launch for a multi-game XCI image"
-msgstr "Escoja qué aplicación lanzar para abrir una imagen multi-juego XCI"
+msgstr "Escoja qué aplicación lanzar para abrir una imagen XCI multi-juego"
 
 #: lutris/runners/ryujinx.py:38 lutris/runners/yuzu.py:30
 msgid "Encryption keys"
@@ -6786,7 +6786,7 @@ msgstr "Píxel perfecto"
 
 #: lutris/runners/scummvm.py:228
 msgid "Even Pixels"
-msgstr "Píxeles compensados"
+msgstr "Escalado por números enteros"
 
 #: lutris/runners/scummvm.py:230
 msgid "Fit"
@@ -8283,11 +8283,11 @@ msgstr "DLsite"
 
 #: lutris/services/dlsite.py:195
 msgid "Could not fetch game details from DLsite"
-msgstr "No puedo obtener los detalles del juego desde DLsite"
+msgstr "No se han podido obtener los detalles del juego desde DLsite"
 
 #: lutris/services/dlsite.py:204
 msgid "DLsite cookies not found. Please log in again."
-msgstr "No se encuentran cookies de DLsite. Conéctese de nuevo."
+msgstr "No se encuentran cookies de DLsite. Inicie sesión de nuevo."
 
 #: lutris/services/dlsite.py:218
 msgid "Could not resolve download link. Ensure you own this game."
